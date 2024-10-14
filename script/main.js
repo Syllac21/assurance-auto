@@ -12,7 +12,7 @@ const AffichageContrat = document.getElementById('root');
 
 function generate(anciennete, age, jeuneConducteur, nbAccident){
 
-    let classeContrat = 4 + anciennete + age + jeuneConducteur - nbAccident
+    let classeContrat = 4 + anciennete + age + jeuneConducteur + nbAccident
     
     if(classeContrat < 1){
         classeContrat = 1;
@@ -30,16 +30,16 @@ function generate(anciennete, age, jeuneConducteur, nbAccident){
             break;
         case 3 :
             reponse += 'C';
-            console.log (reponse);
+            
             break;
         case 4 :
             reponse += 'D';
             break;
         case 5 :
-            reponse ='Nous sommes désolé, mais vous ne pouvez pas vous assurer chez nous'
+            reponse ='Nous sommes désolé, mais vous ne pouvez pas vous assurer chez nous';
             break;
     }
-
+    console.log (reponse);
     return reponse;
 
 }
