@@ -19,7 +19,7 @@ function generate(anciennete, age, jeuneConducteur, nbAccident){
     } else if(classeContrat > 4){
         classeContrat = 5;
     }
-    console.log (classeContrat);
+    
     let reponse = 'Vous pouvez bénéficier du contrat au tarif ';
     switch (classeContrat) {
         case 1 :
@@ -39,7 +39,7 @@ function generate(anciennete, age, jeuneConducteur, nbAccident){
             reponse ='Nous sommes désolé, mais vous ne pouvez pas vous assurer chez nous';
             break;
     }
-    console.log (reponse);
+    
     return reponse;
 
 }
