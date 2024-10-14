@@ -1,10 +1,13 @@
+
+// police d'assurance
+
 // récupération des éléments du formulaire
 const inputAnciennete = document.getElementById('anciennete');
 const inputAge = document.getElementById('age');
 const inputPermis = document.getElementById('permis');
 const inputNbAccidents = document.getElementById('nb_accident');
 const envoieInformations = document.getElementById('informations');
-const AffichageContrat = document.getElementById('root');
+const AffichageContrat = document.getElementById('assurance');
 
 
 
@@ -58,4 +61,32 @@ const submit = envoieInformations.addEventListener("submit", (event)=>{
 
     let reponse = generate(anciennete, age, jeuneConducteur, nbAccident);
     AffichageContrat.innerHTML = reponse;
+})
+
+
+// photocopie
+
+const inputNbPhotocopie = document.getElementById('nb_photocopie');
+const envoiePhotocopie = document.getElementById('form_photocopie');
+const retourPhotocopie = document.getElementById('tarif_photocopie')
+
+const tarifA = 0.10;
+const tarifB = 0.09;
+const tarifC = 0.08;
+
+const submitPhotocopie = envoiePhotocopie.addEventListener('submit', (event)=>{
+    event.preventDefault();
+    let nbPhotocopie = Number(inputNbPhotocopie.value);
+    let tarif = tarifC;
+    if(nbPhotocopie<31){
+        tarif = tarifB;
+    }
+    if(nbPhotocopie<11) {
+        tarif = tarifA;
+    }
+    let cout = nbPhotocopie * tarif;
+
+    let reponsePhotocopie = `cela vous coutera ${cout}€.`;
+    retourPhotocopie.innerHTML = reponsePhotocopie;
+
 })
