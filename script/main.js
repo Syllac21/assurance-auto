@@ -90,3 +90,24 @@ const submitPhotocopie = envoiePhotocopie.addEventListener('submit', (event)=>{
     retourPhotocopie.innerHTML = reponsePhotocopie;
 
 })
+
+// impots
+const inputSexe = document.getElementById('sexe');
+const inputAgeImpots = document.getElementById('age_impots');
+const envoieImpots = document.getElementById('form_impots');
+const retourImpots = document.getElementById('retour_impots');
+
+const submitImpots = envoieImpots.addEventListener('submit', (event)=>{
+    event.preventDefault();
+    let sexe = inputSexe.value;
+    let ageImpots = Number(inputAgeImpots.value);
+    let reponseImpots = 'vous ne payez pas d\'impots'
+
+    if(ageImpots >= 18){
+        if(sexe === 'homme' || ageImpots < 35){
+            reponseImpots = 'Pas de chance, vous payez des impots';
+        }
+    }
+    retourImpots.innerHTML = reponseImpots;
+
+})
