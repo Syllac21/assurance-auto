@@ -6,17 +6,12 @@ const inputNbAccidents = document.getElementById('nb_accident');
 const envoieInformations = document.getElementById('informations');
 const AffichageContrat = document.getElementById('root');
 
-//création des variable en nombre
-nbAnContrat =Number(inputAnciennete.value);
-ageCandidat = Number(inputAge.value);
-nbAnPermis = Number(inputPermis.value);
-nbAccident = Number(inputNbAccidents.value);
 
-let anciennete = nbAnContrat>1 ? -1 : 0 ;
-let age = ageCandidat>25 ? -1 : 0;
-let jeuneConducteur = nbAnPermis>2 ? -1 : 0;
+
+
 
 function generate(anciennete, age, jeuneConducteur, nbAccident){
+
     let classeContrat = 4 + anciennete + age + jeuneConducteur - nbAccident
     
     if(classeContrat < 1){
@@ -24,22 +19,23 @@ function generate(anciennete, age, jeuneConducteur, nbAccident){
     } else if(classeContrat > 4){
         classeContrat = 5;
     }
-    let reponse = 'Vous pouvez bénéficier du contrat au tarif '
+    console.log (classeContrat);
+    let reponse = 'Vous pouvez bénéficier du contrat au tarif ';
     switch (classeContrat) {
-        case '1' :
+        case 1 :
             reponse += 'A';
             break;
-        case '2' :
+        case 2 :
             reponse += 'B';
             break;
-        case '3' :
+        case 3 :
             reponse += 'C';
+            console.log (reponse);
             break;
-        case '4' :
+        case 4 :
             reponse += 'D';
             break;
-        case '5' :
-            reponse ='';
+        case 5 :
             reponse ='Nous sommes désolé, mais vous ne pouvez pas vous assurer chez nous'
             break;
     }
@@ -48,8 +44,18 @@ function generate(anciennete, age, jeuneConducteur, nbAccident){
 
 }
 
-const submit=envoieInformations.addEventListener("submit", (event)=>{
+const submit = envoieInformations.addEventListener("submit", (event)=>{
     event.preventDefault();
+    //création des variable en nombre
+    let nbAnContrat =Number(inputAnciennete.value);
+    let ageCandidat = Number(inputAge.value);
+    let nbAnPermis = Number(inputPermis.value);
+    let nbAccident = Number(inputNbAccidents.value);
+
+    let anciennete = nbAnContrat>1 ? -1 : 0 ;
+    let age = ageCandidat>25 ? -1 : 0;
+    let jeuneConducteur = nbAnPermis>2 ? -1 : 0;   
+
     let reponse = generate(anciennete, age, jeuneConducteur, nbAccident);
     AffichageContrat.innerHTML = reponse;
 })
