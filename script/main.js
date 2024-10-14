@@ -77,14 +77,19 @@ const tarifC = 0.08;
 const submitPhotocopie = envoiePhotocopie.addEventListener('submit', (event)=>{
     event.preventDefault();
     let nbPhotocopie = Number(inputNbPhotocopie.value);
-    let tarif = tarifC;
+    let cout = 0;
+
+    if (nbPhotocopie<10){
+        cout = nbPhotocopie * tarifA
+    }
     if(nbPhotocopie<31){
-        tarif = tarifB;
+        cout = 10*tarifA + (nbPhotocopie-10) * tarifB
     }
     if(nbPhotocopie<11) {
-        tarif = tarifA;
+        cout = 10 * tarifA + 20 * tarifB + (nbPhotocopie-30) * tarifC
     }
-    let cout = nbPhotocopie * tarif;
+    
+    cout = Math.round(cout*100)/100;
 
     let reponsePhotocopie = `cela vous coutera ${cout}€.`;
     retourPhotocopie.innerHTML = reponsePhotocopie;
@@ -111,3 +116,28 @@ const submitImpots = envoieImpots.addEventListener('submit', (event)=>{
     retourImpots.innerHTML = reponseImpots;
 
 })
+
+// étoiles décroissantes
+const afficheEtoile = document.getElementById('etoilesUp');
+let text = '*********';
+
+for(let i=0 ; i<9 ; i++){
+    let newDiv = document.createElement("div");
+    newDiv.innerHTML = text;
+    afficheEtoile.appendChild(newDiv)
+    text = text.slice(0,-1);
+
+}
+
+// étoiles croissantes
+const afficheEtoileDown = document.getElementById('etoilesDown');
+
+for (let i = 0; i<9; i++){
+    let newDiv = document.createElement("div");
+    newDiv.innerHTML = text;
+    afficheEtoileDown.appendChild(newDiv);
+    text += "*";
+}
+
+let t = ['h','j','x','k','x','j']
+let rangs =""
