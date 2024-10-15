@@ -357,3 +357,53 @@ let calculFraisKm = document.addEventListener('submit', (event)=>{
     let coutParPassager = Math.round(totalFraisKm * 100 / nbPassagers)/100;
     retourFraisKm.innerHTML = `Les frais se montent à ${totalFraisKm}€ pour ${nbPassagers} soit ${coutParPassager}€ par personne.`;
 })
+
+// tri note
+const retourTriNote = document.getElementById('retourTriNote');
+let etudiants = [
+    { nom: 'Agathe', note: 14 },
+    { nom: 'Wlad', note: 17 },
+    { nom: 'Yohann', note: 16 },
+    { nom: 'Laureline', note: 17 },
+    { nom: 'Christian', note: 12 },
+    { nom: 'Yannick', note: 19 },
+    { nom: 'Kaique', note: 17 },
+    { nom: 'Angélique', note: 18 },
+    { nom: 'Dorian', note: 15 },
+    { nom: 'emmanuel', note: 16 },
+    { nom: 'Jeremy', note: 13 },
+    { nom: 'Sylvain', note: 17 },
+    { nom: 'Yann', note: 15 },
+    { nom: 'Amin', note: 16 }
+    ];
+
+let bonneMoyenne =[];
+
+for(let i = 0 ; i < etudiants.length ; i++){
+    if(etudiants[i].note > 15){
+        bonneMoyenne.push(etudiants[i].nom)
+    }
+}
+let newDiv = document.createElement('div');
+newDiv.innerHTML = bonneMoyenne;
+//retourTriNote.appendChild(newDiv);
+
+// let ordreAlpha = [];
+
+// for(let i = 0 ; i < etudiants.length ; i++){
+//     ordreAlpha += etudiants[i].nom;
+    
+// }
+
+// for(let i = 0 ; i < ordreAlpha.length ; i++){
+//     for(let j = 0 ; j < ordreAlpha.length ; j++){
+//         if(ordreAlpha[j] > ordreAlpha[j+1]){
+            
+//             let temp = ordreAlpha[j];
+//             ordreAlpha[j] = ordreAlpha[j+1];
+//             ordreAlpha[j + 1] = temp;
+//         }
+//     }
+// }
+
+// retourTriNote.innerHTML = ordreAlpha;
