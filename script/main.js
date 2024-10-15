@@ -189,3 +189,25 @@ const lancerTri = document.addEventListener('click',()=>{
     let listefin = tri(listedebut);
     afficheListefin.innerHTML = listefin
 })
+
+// palindrome
+const inputPalindrome = document.getElementById('mot');
+const formPalindrome = document.getElementById('formPalindrome');
+const retourPalindrome = document.getElementById('retourPalindrome');
+
+let verifPalindrome = document.addEventListener('submit',(event)=>{
+    event.preventDefault();
+    let mot = inputPalindrome.value;
+    let reponse = true;
+    for(let i = 0 ; i < mot.length ; i++){
+        
+        if(mot.charAt(i) != mot.charAt(mot.length-i-1)){
+            reponse = false;
+        }
+    }
+    if(reponse){
+        retourPalindrome.innerHTML = 'ce mot est un palindrome';
+    } else {
+        retourPalindrome.innerHTML = 'Ce mot n\'est pas un palindrome';
+    }
+})
