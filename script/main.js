@@ -335,3 +335,25 @@ function cryptageMotClair(motClair){
 let lancerCrypte = document.addEventListener('submit', (event)=>{
     cryptageMotClair(motClair);
 })
+
+// Mouah
+const retourMouah = document.getElementById('retourMouah');
+let moua = 'Moua';
+for(let i = 0 ; i < 6 ; i++){
+    moua += 'ah'
+}
+retourMouah.innerHTML = moua;
+
+// Frais km
+const inputNbPassagers = document.getElementById('nbPassagers');
+const inputNbKm = document.getElementById('nbKm');
+const formFraisKm = document.getElementById('fraisKm');
+const retourFraisKm = document.getElementById('retourFraisKm');
+
+let calculFraisKm = document.addEventListener('submit', (event)=>{
+    let nbKm = Number(inputNbKm.value);
+    let nbPassagers = Number(inputNbPassagers.value);
+    let totalFraisKm = Math.round(100 * nbKm * (0.6 - nbPassagers * 0.05))/100;
+    let coutParPassager = Math.round(totalFraisKm * 100 / nbPassagers)/100;
+    retourFraisKm.innerHTML = `Les frais se montent à ${totalFraisKm}€ pour ${nbPassagers} soit ${coutParPassager}€ par personne.`;
+})
