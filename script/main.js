@@ -211,3 +211,94 @@ let verifPalindrome = document.addEventListener('submit',(event)=>{
         retourPalindrome.innerHTML = 'Ce mot n\'est pas un palindrome';
     }
 })
+
+// tour de Hannoï
+// const colA = document.getElementById('colA');
+// const colB = document.getElementById('colB');
+// const colC = document.getElementById('colC');
+// const element1 = document.getElementById('element1');
+// const element2 = document.getElementById('element2');
+// const element3 = document.getElementById('element3');
+// const btnJouer = document.getElementById('btnJouer');
+
+// let listElem = ['element1', 'element2', 'element3'];
+// let listCol = ['colA', 'colB', 'colC'];
+// let tableau = [[],[],[]];
+
+// let color = ['red', 'blue', 'green']
+
+// function createDiv(numElem, numCol){
+//     let newDiv = document.createElement('div');
+//     newDiv.setAttribute('class','element');
+//     newDiv.setAttribute('id',`element${numElem}`);
+//     newDiv.style.width = `${numElem * 20}%`;
+//     newDiv.style.backgroundcolor =`${color[numElem]}`;
+//     listCol[numCol-1].appendChild(newDiv);
+//     tableau[numCol].unshift(numElem); 
+// }
+
+// function removeDiv(numElem, numCol){
+//     listElem[numElem - 1].remove();
+// }
+
+// function initJeuxAnoi(){
+//     element1.remove();
+//     element2.remove();
+//     element3.remove();
+//     let div1 = createDiv(1,1);
+//     let div2 = createDiv(2,1);
+//     let div3 = createDiv(3,1);
+
+// }
+
+// let lancerJeu = document.addEventListener('click', ()=>{
+//     initJeuxAnoi();
+// })
+
+// const inputNbDisques = document.getElementById('nbDisques');
+// const retourHanoi = document.getElementById('retourHanoi');
+// let nbDisques = Number(inputNbDisques.value) ;
+// let colA = 1;
+// let colB = 2;
+// let colC = 3;
+
+// function hanoi(nbDisques, colA, colB, colC){
+//     if(nbDisques>0){
+//         hanoi(nbDisques-1, colA, colC, colB);
+
+//         let newDiv = document.createElement('div');
+//         newDiv.innerHTML = "col " + colA + " vers " + "col " + colC;
+//         retourHanoi.appendChild(newDiv);
+//         hanoi(nbDisques-1,colB , colA, colC);
+//     }
+// }
+
+// let lancerJeu =document.addEventListener('change', ()=>{
+//     retourHanoi.innerHTML = "";
+//     hanoi(nbDisques, colA, colB, colC);
+// })
+
+
+// diese et Asterix
+const retourDiese = document.getElementById('diese');
+let charA = '#';
+let charB = '*';
+let binome = charA + charB;
+let chaine = "";
+
+for(let i = 0 ; i<6 ; i++){
+    for(let j = 0 ; j < 5 ; j++){
+        if(i % 2 === 0){
+            binome = charB + charA;
+            
+        } else {
+            binome = charA + charB;
+        }
+        
+        chaine += binome
+    }
+    let newDiv = document.createElement('div');
+    newDiv.innerHTML = chaine;
+    retourDiese.appendChild(newDiv);
+    chaine ='';
+}
