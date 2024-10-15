@@ -302,3 +302,36 @@ for(let i = 0 ; i<6 ; i++){
     retourDiese.appendChild(newDiv);
     chaine ='';
 }
+
+// cryptage
+
+const inputMotClair = document.getElementById('motClair');
+const formCryptage = document.getElementById('cryptage');
+const retourCryptage = document.getElementById('retourCryptage');
+let motClair = inputMotClair.value;
+let alphabet = 'abcdefghijklmnopqrstuvwxyz';
+
+
+function cryptageMotClair(motClair){
+    let motCrypte = '';
+    retourCryptage.innerHTML = '';
+    for(let i = 0 ; i < motClair.length ; i++){
+        for(let j = 0 ; j < alphabet.length ; j++){
+            if(alphabet.charAt(j) === motClair.charAt(i)){
+                
+                if(j+3>alphabet.length){
+                    motCrypte += alphabet.charAt(j+3-alphabet.length);
+                    console.log(motCrypte);
+                } else{
+                    motCrypte += alphabet.charAt(j+3);
+                    
+                }
+            }
+        }
+    }
+    retourCryptage.innerHTML = 'le mot crypté est : ' + motCrypte;
+}
+
+let lancerCrypte = document.addEventListener('submit', (event)=>{
+    cryptageMotClair(motClair);
+})
