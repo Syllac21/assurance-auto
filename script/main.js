@@ -139,5 +139,53 @@ for (let i = 0; i<9; i++){
     text += "*";
 }
 
-let t = ['h','j','x','k','x','j']
-let rangs =""
+// occurences
+const inputLettre = document.getElementById('lettre');
+const retourOcc = document.getElementById('reponse_occ');
+
+let t = ['h','j','x','k','x','j'];
+let rangs ="";
+
+
+function occurences(t,lettre){
+    let index = [];
+    for(let i = 0 ; i < t.length ; i++){
+        if(t[i] === lettre){
+            index.push(i);
+        }
+    }
+    return index;
+}
+
+const afficheOcc = document.addEventListener('change',()=>{
+    let lettre = inputLettre.value;
+    let index = occurences(t,lettre);
+    retourOcc.innerHTML = index;
+})
+
+// tri à bulles
+const afficheListeDebut = document.getElementById('listeDebut');
+const afficheListefin = document.getElementById('listeFin');
+const btnTrier = document.getElementById('trier');
+
+let listedebut = [5,1,3,2,4];
+afficheListeDebut.innerHTML = listedebut;
+
+function tri(listedebut){
+    for(let i = listedebut.length ; i > 0 ; i--){
+        for(let j=listedebut.length ; j > 0 ; j--){
+            if(listedebut[j] > listedebut[j-1]){
+                let temporaire = listedebut[j];
+                listedebut[j] = listedebut[j-1];
+                listedebut[j-1] = temporaire;
+            }
+        }
+    }
+
+    return listedebut;
+}
+
+const lancerTri = document.addEventListener('click',()=>{
+    let listefin = tri(listedebut);
+    afficheListefin.innerHTML = listefin
+})

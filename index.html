@@ -82,8 +82,23 @@
     <section>
         <h2>occurences</h2>
         <form action="#" id="form-occ">
-            
+            <label for="lettre">quelle lettre choisissez-vous</label>
+            <select name="lettre" id="lettre">
+                <option value="h">h</option>
+                <option value="j">j</option>
+                <option value="x">x</option>
+                <option value="k">k</option>
+            </select>
         </form>
+        <div id="reponse_occ">
+
+        </div>
+    </section>
+    <section>
+        <h2>tri à bulles</h2>
+        <div id="listeDebut"></div>
+        <button id="trier">trier</button>
+        <div id="listeFin"></div>
     </section>
 
     <script src="/script/main.js"></script>
