@@ -96,7 +96,7 @@ const submitPhotocopie = envoiePhotocopie.addEventListener('submit', (event)=>{
 
 })
 
-// impots
+// impots + Laureline
 const inputSexe = document.getElementById('sexe');
 const inputAgeImpots = document.getElementById('age_impots');
 const envoieImpots = document.getElementById('form_impots');
@@ -106,14 +106,26 @@ const submitImpots = envoieImpots.addEventListener('submit', (event)=>{
     event.preventDefault();
     let sexe = inputSexe.value;
     let ageImpots = Number(inputAgeImpots.value);
-    let reponseImpots = 'vous ne payez pas d\'impots'
+    let reponseImpots = 'vous ne payez pas d\'impots';
+    let taux = 0;
 
     if(ageImpots >= 18){
         if(sexe === 'homme' || ageImpots < 35){
-            reponseImpots = 'Pas de chance, vous payez des impots';
+            reponseImpots = 'Pas de chance, vous payez des impots et votre taux est de : ';
+            if(sexe === 'homme'){
+                taux = ageImpots * 0.1;
+            } else {
+                if(ageImpots<25){
+                    taux = ageImpots * 0.08;
+                } else {
+                    taux = ageImpots * 0.05;
+                }
+            }
+            reponseImpots += taux;
         }
     }
     retourImpots.innerHTML = reponseImpots;
+
 
 })
 
