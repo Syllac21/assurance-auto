@@ -212,52 +212,52 @@ let verifPalindrome = document.addEventListener('submit',(event)=>{
     }
 })
 
-tour de Hannoï
-const colA = document.getElementById('colA');
-const colB = document.getElementById('colB');
-const colC = document.getElementById('colC');
-const element1 = document.getElementById('element1');
-const element2 = document.getElementById('element2');
-const element3 = document.getElementById('element3');
-const btnJouer = document.getElementById('btnJouer');
+// tour de Hannoï
+// const colA = document.getElementById('colA');
+// const colB = document.getElementById('colB');
+// const colC = document.getElementById('colC');
+// const element1 = document.getElementById('element1');
+// const element2 = document.getElementById('element2');
+// const element3 = document.getElementById('element3');
+// const btnJouer = document.getElementById('btnJouer');
 
-let listElem = ['element1', 'element2', 'element3'];
-let listCol = ['colA', 'colB', 'colC'];
-let tableau = [[],[],[]];
+// let listElem = ['element1', 'element2', 'element3'];
+// let listCol = ['colA', 'colB', 'colC'];
+// let tableau = [[],[],[]];
 
-let color = ['red', 'blue', 'green']
+// let color = ['red', 'blue', 'green']
 
-function createDiv(numElem, numCol){
-    let newDiv = document.createElement('div');
-    newDiv.setAttribute('class','element');
-    newDiv.setAttribute('id',`element${numElem}`);
-    newDiv.style.width = `${numElem * 20}%`;
-    newDiv.style.backgroundcolor =`${color[numElem]}`;
-    listCol[numCol-1].appendChild(newDiv);
-    tableau[numCol].unshift(numElem); 
-}
+// function createDiv(numElem, numCol){
+//     let newDiv = document.createElement('div');
+//     newDiv.setAttribute('class','element');
+//     newDiv.setAttribute('id',`element${numElem}`);
+//     newDiv.style.width = `${numElem * 20}%`;
+//     newDiv.style.backgroundcolor =`${color[numElem]}`;
+//     listCol[numCol-1].appendChild(newDiv);
+//     tableau[numCol].unshift(numElem); 
+// }
 
-function removeDiv(numElem, numCol){
-    listElem[numElem - 1].remove();
-}
+// function removeDiv(numElem, numCol){
+//     listElem[numElem - 1].remove();
+// }
 
-function initJeuxAnoi(){
-    element1.remove();
-    element2.remove();
-    element3.remove();
-    let div1 = createDiv(1,1);
-    let div2 = createDiv(2,1);
-    let div3 = createDiv(3,1);
+// function initJeuxAnoi(){
+//     element1.remove();
+//     element2.remove();
+//     element3.remove();
+//     let div1 = createDiv(1,1);
+//     let div2 = createDiv(2,1);
+//     let div3 = createDiv(3,1);
 
-}
+// }
 
-let lancerJeu = document.addEventListener('click', ()=>{
-    initJeuxAnoi();
-})
+// let lancerJeu = document.addEventListener('click', ()=>{
+//     initJeuxAnoi();
+// })
 
 const inputNbDisques = document.getElementById('nbDisques');
 const retourHanoi = document.getElementById('retourHanoi');
-let nbDisques = Number(inputNbDisques.value) ;
+let nbDisques = Number(inputNbDisques.value) + 1 ;
 let colA = 1;
 let colB = 2;
 let colC = 3;
@@ -267,14 +267,14 @@ function hanoi(nbDisques, colA, colB, colC){
         hanoi(nbDisques-1, colA, colC, colB);
 
         let newDiv = document.createElement('div');
-        newDiv.innerHTML = "col " + colA + " vers " + "col " + colC;
+        newDiv.innerHTML = "col " + colA + " vers col " + colC;
         retourHanoi.appendChild(newDiv);
         hanoi(nbDisques-1,colB , colA, colC);
     }
 }
 
 let lancerJeu = document.addEventListener('change', ()=>{
-    retourHanoi.innerHTML = "";
+    retourHanoi.innerHTML = '';
     hanoi(nbDisques, colA, colB, colC);
 })
 
@@ -385,25 +385,43 @@ for(let i = 0 ; i < etudiants.length ; i++){
     }
 }
 let newDiv = document.createElement('div');
-newDiv.innerHTML = bonneMoyenne;
-//retourTriNote.appendChild(newDiv);
+newDiv.innerHTML = 'personnes ayant plus de 15 de moyenne : ' + bonneMoyenne;
+retourTriNote.appendChild(newDiv);
 
-// let ordreAlpha = [];
+let ordreAlpha = [];
 
-// for(let i = 0 ; i < etudiants.length ; i++){
-//     ordreAlpha += etudiants[i].nom;
+for(let i = 0 ; i < etudiants.length ; i++){
+    let nom = etudiants[i].nom;
+    ordreAlpha.push(nom);
     
-// }
 
-// for(let i = 0 ; i < ordreAlpha.length ; i++){
-//     for(let j = 0 ; j < ordreAlpha.length ; j++){
-//         if(ordreAlpha[j] > ordreAlpha[j+1]){
-            
-//             let temp = ordreAlpha[j];
-//             ordreAlpha[j] = ordreAlpha[j+1];
-//             ordreAlpha[j + 1] = temp;
-//         }
-//     }
-// }
+}
 
-// retourTriNote.innerHTML = ordreAlpha;
+
+for(let i = 0 ; i < ordreAlpha.length ; i++){
+    for(let j = 0 ; j < ordreAlpha.length ; j++){
+        if(j+1 < ordreAlpha.length){
+            if(ordreAlpha[j].toLowerCase() > ordreAlpha[j+1].toLowerCase()){
+                
+                let temp = ordreAlpha[j];
+                ordreAlpha[j] = ordreAlpha[j+1];
+                ordreAlpha[j + 1] = temp;
+            }
+
+        }
+    }
+}
+
+let newDiv2 = document.createElement('div');
+newDiv2.innerHTML = 'liste triée par ordre alphabétique : ' + ordreAlpha;
+retourTriNote.appendChild(newDiv2);
+
+let somme = 0;
+for(let i = 0; i < etudiants.length ; i++){
+    somme += etudiants[i].note;
+}
+
+let newDiv3 = document.createElement('div');
+newDiv3.innerHTML = `la moyenne des notes est de : ${Math.round(somme / etudiants.length)}`;
+retourTriNote.appendChild(newDiv3);
+
