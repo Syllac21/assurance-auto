@@ -81,11 +81,9 @@ const submitPhotocopie = envoiePhotocopie.addEventListener('submit', (event)=>{
 
     if (nbPhotocopie<10){
         cout = nbPhotocopie * tarifA
-    }
-    if(nbPhotocopie<31){
+    } else if(nbPhotocopie<31){
         cout = 10*tarifA + (nbPhotocopie-10) * tarifB
-    }
-    if(nbPhotocopie<11) {
+    } else {
         cout = 10 * tarifA + 20 * tarifB + (nbPhotocopie-30) * tarifC
     }
     
